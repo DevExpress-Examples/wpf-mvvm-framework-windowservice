@@ -7,5 +7,5 @@
 * [ChildViewModel.cs](./CS/DXSample/ViewModels/ChildViewModel.cs) (VB: [ChildViewModel.vb](./VB/DXSample/ViewModels/ChildViewModel.vb))
 <!-- default file list end -->
 
-# How-to-use-WindowService
+# How to use WindowService
 This example demonstrates how to use WindowService to show a view as a window and control it from the ViewModel. 
