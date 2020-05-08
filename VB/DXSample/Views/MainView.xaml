@@ -20,7 +20,7 @@
                     </DataTemplate>
                 </dxmvvm:WindowService.ViewTemplate>
                 <dxmvvm:WindowService.WindowStyle>
-                    <Style TargetType="dx:ThemedWindow">
+                    <Style TargetType="Window">
                         <Setter Property="Width" Value="500" />
                         <Setter Property="Height" Value="300" />
                         <Setter Property="Title" Value="{Binding Caption}" />

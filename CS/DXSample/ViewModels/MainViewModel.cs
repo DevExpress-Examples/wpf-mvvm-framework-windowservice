@@ -8,25 +8,25 @@ namespace DXSample.ViewModels {
         public ICommand CloseChildWindowCommand { get; private set; }
         public ICommand RestoreChildWindowCommand { get; private set; }
         public ChildViewModel ChildWindowViewModel {
-            get { return GetValue<ChildViewModel>(); }
-            set { SetValue(value); }
+            get { return GetProperty(() => ChildWindowViewModel); }
+            set { SetProperty(() => ChildWindowViewModel, value); }
         }
         public MainViewModel() {
             ShowChildWindowCommand = new DelegateCommand(ShowChildWindow, CanShowChildWindow);
-            CloseChildWindowCommand = new DelegateCommand(CloseChildWindow, CanCloseChildWindow);            
+            CloseChildWindowCommand = new DelegateCommand(CloseChildWindow, CanCloseChildWindow);
         }
 
         public void ShowChildWindow() {
-            if(ChildWindowViewModel == null) 
-                ChildWindowViewModel = new ChildViewModel() { Caption = "Hello, World!" };                                                 
-            WindowService.Show(ChildWindowViewModel);            
+            if (ChildWindowViewModel == null)
+                ChildWindowViewModel = new ChildViewModel() { Caption = "Hello, World!" };
+            WindowService.Show(ChildWindowViewModel);
         }
         private bool CanShowChildWindow() {
             return !WindowService.IsWindowAlive;
         }
         private void CloseChildWindow() {
             ChildWindowViewModel = null;
-            WindowService.Close();            
+            WindowService.Close();
         }
         private bool CanCloseChildWindow() {
             return WindowService.IsWindowAlive;

@@ -33,18 +33,18 @@ Namespace DXSample.ViewModels
 		End Property
 		Public Property Caption() As String
 			Get
-				Return GetValue(Of String)()
+				Return GetProperty(Function() Caption)
 			End Get
 			Set(ByVal value As String)
-				SetValue(value)
+				SetProperty(Function() Caption, value)
 			End Set
 		End Property
 		Public Property WindowState() As WindowState
 			Get
-				Return GetValue(Of WindowState)()
+				Return GetProperty(Function() WindowState)
 			End Get
 			Set(ByVal value As WindowState)
-				SetValue(value)
+				SetProperty(Function() WindowState, value)
 			End Set
 		End Property
 		Public Sub New()

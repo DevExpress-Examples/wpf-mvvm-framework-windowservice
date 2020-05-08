@@ -39,10 +39,10 @@ Namespace DXSample.ViewModels
 		End Property
 		Public Property ChildWindowViewModel() As ChildViewModel
 			Get
-				Return GetValue(Of ChildViewModel)()
+				Return GetProperty(Function() ChildWindowViewModel)
 			End Get
 			Set(ByVal value As ChildViewModel)
-				SetValue(value)
+				SetProperty(Function() ChildWindowViewModel, value)
 			End Set
 		End Property
 		Public Sub New()
