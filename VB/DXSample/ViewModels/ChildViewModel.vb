@@ -1,69 +1,56 @@
-﻿Imports System
-Imports System.Windows
-Imports System.Windows.Input
-Imports System.Windows.Threading
 Imports DevExpress.Mvvm
+Imports DevExpress.Mvvm.DataAnnotations
+Imports System
+Imports System.Windows
+Imports System.Windows.Threading
 
 Namespace DXSample.ViewModels
-	Public Class ChildViewModel
-		Inherits ViewModelBase
 
-		Protected ReadOnly Property CurrentWindowService() As ICurrentWindowService
-			Get
-				Return Me.GetService(Of ICurrentWindowService)()
-			End Get
-		End Property
-		Private privateCloseWindowCommand As ICommand
-		Public Property CloseWindowCommand() As ICommand
-			Get
-				Return privateCloseWindowCommand
-			End Get
-			Private Set(ByVal value As ICommand)
-				privateCloseWindowCommand = value
-			End Set
-		End Property
-		Private privateTemporarilyHideWindowCommand As ICommand
-		Public Property TemporarilyHideWindowCommand() As ICommand
-			Get
-				Return privateTemporarilyHideWindowCommand
-			End Get
-			Private Set(ByVal value As ICommand)
-				privateTemporarilyHideWindowCommand = value
-			End Set
-		End Property
-		Public Property Caption() As String
-			Get
-				Return GetValue(Of String)()
-			End Get
-			Set(ByVal value As String)
-				SetValue(value)
-			End Set
-		End Property
-		Public Property WindowState() As WindowState
-			Get
-				Return GetValue(Of WindowState)()
-			End Get
-			Set(ByVal value As WindowState)
-				SetValue(value)
-			End Set
-		End Property
-		Public Sub New()
-			CloseWindowCommand = New DelegateCommand(AddressOf CloseWindow)
-			TemporarilyHideWindowCommand = New DelegateCommand(AddressOf TemporarilyHideWindow)
-		End Sub
-		Private Sub CloseWindow()
-			Me.CurrentWindowService.Close()
-		End Sub
-		Private Sub TemporarilyHideWindow()
-			Me.CurrentWindowService.Hide()
-			Dim timer = New DispatcherTimer() With {.Interval = TimeSpan.FromSeconds(3)}
-			AddHandler timer.Tick, Sub(o, e)
-				Me.CurrentWindowService.SetWindowState(WindowState.Maximized)
-				Me.CurrentWindowService.Show()
-				Me.CurrentWindowService.Activate()
-				timer.Stop()
-			End Sub
-			timer.Start()
-		End Sub
-	End Class
+    Public Class ChildViewModel
+        Inherits ViewModelBase
+
+        Protected ReadOnly Property CurrentWindowService As ICurrentWindowService
+            Get
+                Return GetService(Of ICurrentWindowService)()
+            End Get
+        End Property
+
+        Public Property Caption As String
+            Get
+                Return GetValue(Of String)()
+            End Get
+
+            Set(ByVal value As String)
+                SetValue(value)
+            End Set
+        End Property
+
+        Public Property WindowState As WindowState
+            Get
+                Return GetValue(Of WindowState)()
+            End Get
+
+            Set(ByVal value As WindowState)
+                SetValue(value)
+            End Set
+        End Property
+
+        <Command>
+        Public Sub CloseWindow()
+            CurrentWindowService.Close()
+        End Sub
+
+        <Command>
+        Public Sub TemporarilyHideWindow()
+            CurrentWindowService.Hide()
+            Dim timer = New DispatcherTimer() With {.Interval = TimeSpan.FromSeconds(3)}
+            AddHandler timer.Tick, Sub(o, e)
+                CurrentWindowService.SetWindowState(WindowState.Maximized)
+                CurrentWindowService.Show()
+                CurrentWindowService.Activate()
+                timer.Stop()
+            End Sub
+            timer.Start()
+        End Sub
+    End Class
 End Namespace

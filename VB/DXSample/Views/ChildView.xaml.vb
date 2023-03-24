@@ -1,14 +1,15 @@
-﻿Imports System.Windows.Controls
+Imports System.Windows.Controls
 
 Namespace DXSample.Views
-	''' <summary>
-	''' Interaction logic for ChildView.xaml
-	''' </summary>
-	Partial Public Class ChildView
-		Inherits UserControl
 
-		Public Sub New()
-			InitializeComponent()
-		End Sub
-	End Class
+    ''' <summary>
+    ''' Interaction logic for ChildView.xaml
+    ''' </summary>
+    Public Partial Class ChildView
+        Inherits UserControl
+
+        Public Sub New()
+            Me.InitializeComponent()
+        End Sub
+    End Class
 End Namespace
