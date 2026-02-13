@@ -30,7 +30,7 @@ This example demonstrates how to use the [WindowService](https://docs.devexpress
 * [Create a Custom Service](https://github.com/DevExpress-Examples/wpf-mvvm-framework-create-a-custom-service)
 * [Use DevExpress Services with a Dependency Injection](https://github.com/DevExpress-Examples/wpf-mvvm-framework-use-services-with-dependency-injection)
 <!-- feedback -->
-## Does this example address your development requirements/objectives?
+## Does This Example Address Your Development Requirements/Objectives?
 
 [<img src="https://www.devexpress.com/support/examples/i/yes-button.svg"/>](https://www.devexpress.com/support/examples/survey.xml?utm_source=github&utm_campaign=wpf-mvvm-framework-windowservice&~~~was_helpful=yes) [<img src="https://www.devexpress.com/support/examples/i/no-button.svg"/>](https://www.devexpress.com/support/examples/survey.xml?utm_source=github&utm_campaign=wpf-mvvm-framework-windowservice&~~~was_helpful=no)
 
